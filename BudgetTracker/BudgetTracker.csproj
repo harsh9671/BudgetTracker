@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-BudgetTracker-7bae4a3b-b3cf-4408-92a5-19a72b953b09</UserSecretsId>
+    <UserSecretsId>aspnet-BudgetTracker-b62dda19-460e-4990-a6e0-f5216e138e39</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
