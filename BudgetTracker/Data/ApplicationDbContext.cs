@@ -14,6 +14,7 @@ namespace BudgetTracker.Data
 
         }
         public DbSet<BudgetTracker.Models.Category> Category { get; set; }
+        public DbSet<BudgetTracker.Models.Expenses> Expenses { get; set; }
 
         
         
