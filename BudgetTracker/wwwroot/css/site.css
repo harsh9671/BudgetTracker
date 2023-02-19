@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+span {
+    background-color: black;
+    color: white;
+    border: double;
+   
+  
+    border-radius: 25px;
+}
