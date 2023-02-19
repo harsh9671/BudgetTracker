@@ -16,11 +16,20 @@ html {
 body {
   margin-bottom: 60px;
 }
-span {
+#span1:hover {
     background-color: black;
     color: white;
     border: double;
-   
-  
+    border-radius: 25px;
+}
+.nav-item:hover {
+    background-color: orange;
+    color: black;
+    border-radius:25px;
+}
+#span2:hover {
+    background-color: black;
+    color: white;
+    border: double;
     border-radius: 25px;
 }
