@@ -13,6 +13,15 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+var config = builder.Configuration;
+builder.Services.AddAuthentication()
+    .AddGoogle(options =>
+    {
+        options.ClientId = config["Authentication:Google:ClientId"];
+        options.ClientSecret = config["Authentication:Google:ClientSecret"];
+    });
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
