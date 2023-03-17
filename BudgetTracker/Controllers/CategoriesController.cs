@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BudgetTracker.Data;
 using BudgetTracker.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BudgetTracker.Controllers
 {
+    [Authorize(Roles = "Customer,Administrator")]
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -42,7 +44,7 @@ namespace BudgetTracker.Controllers
 
             return View(category);
         }
-
+        [Authorize(Roles = "Customer,Administrator")]
         // GET: Categories/Create
         public IActionResult Create()
         {
@@ -64,7 +66,7 @@ namespace BudgetTracker.Controllers
             }
             return View(category);
         }
-
+        [Authorize(Roles = "Customer,Administrator")]
         // GET: Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -115,7 +117,7 @@ namespace BudgetTracker.Controllers
             }
             return View(Category);
         }
-
+        [Authorize(Roles = "Customer,Administrator")]
         // GET: Categories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
