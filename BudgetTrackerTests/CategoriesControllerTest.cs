@@ -1,9 +1,8 @@
 using BudgetTracker.Controllers;
 using BudgetTracker.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.InMemory;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BudgetTrackerTests
 {
@@ -11,31 +10,29 @@ namespace BudgetTrackerTests
     public class CategoriesControllerTest
     {
         private ApplicationDbContext _context;
-        private CategoriesController controller;
-
-        private DbContextOptions<ApplicationDbContext> _dbContextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase(Guid.NewGuid().ToString())
-            .Options;
+        private CategoriesController _controller;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            //mock database
-            _context = new ApplicationDbContext(_dbContextOptions);
+            var dbOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
+               .UseInMemoryDatabase(Guid.NewGuid().ToString())
+               .Options;
 
-            _context.Category.Add(new BudgetTracker.Models.Category
+            _context= new ApplicationDbContext(dbOptions);
+
+            _context.Category.AddRange(new List <BudgetTracker.Models.Category>
             {
-                
+                new BudgetTracker.Models.Category {Id = 1, Name = "Harsh Patel" },
+                new BudgetTracker.Models.Category {Id = 2, Name = "Dhruv Patel"},
+                new BudgetTracker.Models.Category {Id = 3 ,Name = "Rishi Patel"}
+
             });
-
-            
-
-            controller = new CategoriesController(null);
         }
         [TestMethod]
-        public async void IndexLoadView()
+        public async void IndexLoadsView()
         {
-            var result = (ViewResult)await controller.Details(1);
+            var result =(ViewResult) await _controller.Index();
             Assert.IsNotNull(result);
         }
     }

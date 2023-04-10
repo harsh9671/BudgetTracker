@@ -5,7 +5,10 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BudgetTracker", "BudgetTracker\BudgetTracker.csproj", "{1C9D135E-429D-4471-A223-C49D9B631949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetTrackerTests", "BudgetTrackerTests\BudgetTrackerTests.csproj", "{FA163DAC-B60C-480A-89C5-89F6F981A6BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetTrackerTests", "BudgetTrackerTests\BudgetTrackerTests.csproj", "{6ADF0E54-5C89-4B6A-973F-7FEB222971BE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1C9D135E-429D-4471-A223-C49D9B631949} = {1C9D135E-429D-4471-A223-C49D9B631949}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +20,10 @@ Global
 		{1C9D135E-429D-4471-A223-C49D9B631949}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C9D135E-429D-4471-A223-C49D9B631949}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C9D135E-429D-4471-A223-C49D9B631949}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA163DAC-B60C-480A-89C5-89F6F981A6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA163DAC-B60C-480A-89C5-89F6F981A6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA163DAC-B60C-480A-89C5-89F6F981A6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA163DAC-B60C-480A-89C5-89F6F981A6BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ADF0E54-5C89-4B6A-973F-7FEB222971BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ADF0E54-5C89-4B6A-973F-7FEB222971BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ADF0E54-5C89-4B6A-973F-7FEB222971BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ADF0E54-5C89-4B6A-973F-7FEB222971BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
