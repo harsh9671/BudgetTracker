@@ -1,5 +1,7 @@
 using BudgetTracker.Controllers;
 using BudgetTracker.Data;
+using BudgetTracker.Models;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
@@ -21,19 +23,56 @@ namespace BudgetTrackerTests
 
             _context= new ApplicationDbContext(dbOptions);
 
-            _context.Category.AddRange(new List <BudgetTracker.Models.Category>
+            _context.Category.AddRange(new List <Category>
             {
-                new BudgetTracker.Models.Category {Id = 1, Name = "Harsh Patel" },
-                new BudgetTracker.Models.Category {Id = 2, Name = "Dhruv Patel"},
-                new BudgetTracker.Models.Category {Id = 3 ,Name = "Rishi Patel"}
-
+                new Category {Id = 1, Name = "Medical & Healthcare" },
+                new Category {Id = 2, Name = "Utilities"},
+                new Category {Id = 3 ,Name = "Insurance" }
             });
         }
+
         [TestMethod]
-        public async void IndexLoadsView()
+        public async Task Delete_GivenValidCategoryId()
         {
-            var result =(ViewResult) await _controller.Index();
-            Assert.IsNotNull(result);
+            // Arrange
+            var categorytIdToDelete = 1;
+
+            // Act
+            var result = _controller.Delete(categorytIdToDelete);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(NoContentResult));
+            var project = await _context.Category.FindAsync(categorytIdToDelete);
+            Assert.IsNull(project);
         }
+
+        [TestMethod]
+        public async Task Delete_GivenInvalidCategoryId()
+        {
+            // Arrange
+            var projectIdToDelete = 4;
+
+            // Act
+            await _controller.Delete(projectIdToDelete);
+
+            // Assert
+            Assert.AreEqual(3, _context.Category.Count());
+        }
+
+        [TestMethod]
+        public void Delete_RemovesCategoryFromDatabase()
+        {
+            // Arrange
+            var categorytIdToDelete = 1;
+
+            // Act
+            _controller.Delete(categorytIdToDelete);
+
+            // Assert
+            Assert.AreEqual(2, _context.Category.Count());
+            Assert.IsFalse(_context.Category.Any(p => p.Id == categorytIdToDelete));
+        }
+
+  
     }
 }
